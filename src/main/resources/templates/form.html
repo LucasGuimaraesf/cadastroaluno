@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${aluno.id != null ? 'Editar Aluno' : 'Novo Aluno'}">Aluno</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-primary shadow-sm">
+    <div class="container">
+        <span class="navbar-brand mb-0 h1">
+            <i class="bi bi-mortarboard-fill me-2"></i>Sistema de Cadastro de Alunos
+        </span>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0">
+                        <i class="bi bi-person-plus-fill me-2 text-primary"></i>
+                        <span th:text="${aluno.id != null ? 'Editar Aluno' : 'Cadastrar Aluno'}">Cadastrar Aluno</span>
+                    </h5>
+                </div>
+                <div class="card-body p-4">
+                    <form th:action="@{/salvar}" th:object="${aluno}" method="post">
+                        <input type="hidden" th:field="*{id}">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nome</label>
+                            <input type="text" th:field="*{nome}" th:errorclass="is-invalid" class="form-control" placeholder="Nome completo">
+                            <div class="invalid-feedback" th:errors="*{nome}"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Matrícula</label>
+                            <input type="text" th:field="*{matricula}" th:errorclass="is-invalid" class="form-control" placeholder="Somente números">
+                            <div class="invalid-feedback" th:errors="*{matricula}"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8 mb-3">
+                                <label class="form-label">Curso</label>
+                                <input type="text" th:field="*{curso}" th:errorclass="is-invalid" class="form-control">
+                                <div class="invalid-feedback" th:errors="*{curso}"></div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Período</label>
+                                <input type="text" th:field="*{periodo}" th:errorclass="is-invalid" class="form-control" placeholder="Ex: 3">
+                                <div class="invalid-feedback" th:errors="*{periodo}"></div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2 mt-3">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-lg me-1"></i>Salvar
+                            </button>
+                            <a href="/" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-1"></i>Voltar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
