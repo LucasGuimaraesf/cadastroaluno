@@ -6,6 +6,12 @@ e empacotada em Docker.
 
 ---
 
+## Alunos
+
+- Ana Julia de Oliveira Rabelo - Matrícula: 1250207762
+- Lucas Guimarães Fabrício - Matrícula: 1250111347
+- Lucas Emanuel de Souza Santos - Matrícula: 1250124354
+
 ## Funcionalidades
 
 - **Login** com dois perfis (usuários em memória, só para fins didáticos):
@@ -79,16 +85,16 @@ src/main/resources/
 ## Como executar com Docker
 
 ### Pré-requisitos
-- **Docker Desktop** instalado e **aberto** (ícone verde / "running").
+- Docker Desktop instalado e aberto (ícone verde / "running").
 
 ### Passos
 
-**1. Criar a rede** (permite que os containers conversem pelo nome):
+1. Criar a rede (permite que os containers conversem pelo nome):
 ```powershell
 docker network create cadastro-net
 ```
 
-**2. Subir o PostgreSQL:**
+2. Subir o PostgreSQL:
 ```powershell
 docker run -d --name cadastro-postgres --network cadastro-net -e POSTGRES_DB=cadastroaluno -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -v cadastro-pgdata:/var/lib/postgresql/data postgres:16
 ```
